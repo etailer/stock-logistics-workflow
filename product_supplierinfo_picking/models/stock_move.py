@@ -17,7 +17,7 @@ class StockMove(models.Model):
             and m.product_tmpl_id.seller_ids
         ):
             suppliers = move.product_tmpl_id.seller_ids.filtered(
-                lambda m: m.name == move.picking_id.partner_id
+                lambda m: m.partner_id == move.picking_id.partner_id
             )
             if suppliers:
                 move.product_supplier_name = suppliers[0].product_name
